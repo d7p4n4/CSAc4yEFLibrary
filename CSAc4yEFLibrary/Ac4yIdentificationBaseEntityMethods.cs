@@ -9,13 +9,23 @@ namespace DataAccess
 {
     public class Ac4yIdentificationBaseEntityMethods : Ac4yIdentificationBaseAlgebra
     {
-        public static Ac4yIdentificationBase findFirstById(Int32 id)
+        private AllContext context { get; set; }
+
+        public Ac4yIdentificationBaseEntityMethods() { }
+
+        public Ac4yIdentificationBaseEntityMethods(AllContext allContext)
+        {
+            context = allContext;
+        }
+
+
+        public Ac4yIdentificationBase findFirstById(Int32 id)
         {
             Ac4yIdentificationBase a = null;
 
-            using (var ctx = new AllContext())
+            using (context)
             {
-                var query = ctx.Ac4yIdentificationBases
+                var query = context.Ac4yIdentificationBases
                                 .Where(ss => ss.id == id)
                                 .FirstOrDefault<Ac4yIdentificationBase>();
 
@@ -329,13 +339,13 @@ namespace DataAccess
             }
         }
 
-	public static void addNewAc4yIdentificationBase(Ac4yIdentificationBase _Ac4yIdentificationBase)
+	public void addNewAc4yIdentificationBase(Ac4yIdentificationBase _Ac4yIdentificationBase)
 	{
-		using (var ctx = new AllContext())
+		using (context)
             {
-                ctx.Ac4yIdentificationBases.Add(_Ac4yIdentificationBase);
+                context.Ac4yIdentificationBases.Add(_Ac4yIdentificationBase);
 
-                ctx.SaveChanges();
+                context.SaveChanges();
             }
 	}
     }
