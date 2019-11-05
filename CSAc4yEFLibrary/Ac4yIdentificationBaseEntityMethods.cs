@@ -9,7 +9,7 @@ namespace DataAccess
 {
     public class Ac4yIdentificationBaseEntityMethods : Ac4yIdentificationBaseAlgebra
     {
-        private AllContext context { get; set; }
+        public AllContext context { get; set; }
 
         public Ac4yIdentificationBaseEntityMethods() { }
 
