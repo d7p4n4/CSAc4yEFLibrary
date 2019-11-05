@@ -1,45 +1,46 @@
-using CSAc4y.Class;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using d7p4n4.Algebra.Class;
+using d7p4n4.Final.Class;
+using d7p4n4.Context.Class;
 
 
-namespace DataAccess
+namespace d7p4n4.EFMethods.Class
 {
     public class Ac4yIdentificationBaseEntityMethods : Ac4yIdentificationBaseAlgebra
     {
-        public AllContext context { get; set; }
+		public string baseName { get; set; }
 
         public Ac4yIdentificationBaseEntityMethods() { }
 
-        public Ac4yIdentificationBaseEntityMethods(AllContext allContext)
+        public Ac4yIdentificationBaseEntityMethods(string newBaseName)
         {
-            context = allContext;
+            baseName = newBaseName;
         }
-
-
+	
         public Ac4yIdentificationBase findFirstById(Int32 id)
         {
             Ac4yIdentificationBase a = null;
 
-            using (context)
+            using (var ctx = new AllContext(baseName))
             {
-                var query = context.Ac4yIdentificationBases
+                var query = ctx.Ac4yIdentificationBases
                                 .Where(ss => ss.id == id)
                                 .FirstOrDefault<Ac4yIdentificationBase>();
 
                 a = query;
             }
             return a;
-        }/*
+        }
         public Ac4yIdentificationBase findFirstByGUID(String GUID)
         {
             Ac4yIdentificationBase a = null;
 
-            using (context)
+            using (var ctx = new AllContext(baseName))
             {
-                var query = context.Ac4yIdentificationBases
+                var query = ctx.Ac4yIdentificationBases
                                 .Where(ss => ss.GUID == GUID)
                                 .FirstOrDefault<Ac4yIdentificationBase>();
 
@@ -47,11 +48,11 @@ namespace DataAccess
             }
             return a;
         }
-        public static Ac4yIdentificationBase findFirstByHumanId(String HumanId)
+        public Ac4yIdentificationBase findFirstByHumanId(String HumanId)
         {
             Ac4yIdentificationBase a = null;
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yIdentificationBases
                                 .Where(ss => ss.HumanId == HumanId)
@@ -61,11 +62,11 @@ namespace DataAccess
             }
             return a;
         }
-        public static Ac4yIdentificationBase findFirstByPublicHumanId(String PublicHumanId)
+        public Ac4yIdentificationBase findFirstByPublicHumanId(String PublicHumanId)
         {
             Ac4yIdentificationBase a = null;
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yIdentificationBases
                                 .Where(ss => ss.PublicHumanId == PublicHumanId)
@@ -75,11 +76,11 @@ namespace DataAccess
             }
             return a;
         }
-        public static Ac4yIdentificationBase findFirstByCreatedAt(DateTime CreatedAt)
+        public Ac4yIdentificationBase findFirstByCreatedAt(DateTime CreatedAt)
         {
             Ac4yIdentificationBase a = null;
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yIdentificationBases
                                 .Where(ss => ss.CreatedAt == CreatedAt)
@@ -89,11 +90,11 @@ namespace DataAccess
             }
             return a;
         }
-        public static Ac4yIdentificationBase findFirstByUpdatedAt(String UpdatedAt)
+        public Ac4yIdentificationBase findFirstByUpdatedAt(String UpdatedAt)
         {
             Ac4yIdentificationBase a = null;
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yIdentificationBases
                                 .Where(ss => ss.UpdatedAt == UpdatedAt)
@@ -104,11 +105,11 @@ namespace DataAccess
             return a;
         }
 
-        public static List<Ac4yIdentificationBase> findListById(Int32 id)
+        public List<Ac4yIdentificationBase> findListById(Int32 id)
         {
             List<Ac4yIdentificationBase> a = new List<Ac4yIdentificationBase>();
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yIdentificationBases
                                 .Where(ss => ss.id == id).ToList();
@@ -117,11 +118,11 @@ namespace DataAccess
             }
             return a;
         }
-        public static List<Ac4yIdentificationBase> findListByGUID(String GUID)
+        public List<Ac4yIdentificationBase> findListByGUID(String GUID)
         {
             List<Ac4yIdentificationBase> a = new List<Ac4yIdentificationBase>();
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yIdentificationBases
                                 .Where(ss => ss.GUID == GUID).ToList();
@@ -130,11 +131,11 @@ namespace DataAccess
             }
             return a;
         }
-        public static List<Ac4yIdentificationBase> findListByHumanId(String HumanId)
+        public List<Ac4yIdentificationBase> findListByHumanId(String HumanId)
         {
             List<Ac4yIdentificationBase> a = new List<Ac4yIdentificationBase>();
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yIdentificationBases
                                 .Where(ss => ss.HumanId == HumanId).ToList();
@@ -143,11 +144,11 @@ namespace DataAccess
             }
             return a;
         }
-        public static List<Ac4yIdentificationBase> findListByPublicHumanId(String PublicHumanId)
+        public List<Ac4yIdentificationBase> findListByPublicHumanId(String PublicHumanId)
         {
             List<Ac4yIdentificationBase> a = new List<Ac4yIdentificationBase>();
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yIdentificationBases
                                 .Where(ss => ss.PublicHumanId == PublicHumanId).ToList();
@@ -156,11 +157,11 @@ namespace DataAccess
             }
             return a;
         }
-        public static List<Ac4yIdentificationBase> findListByCreatedAt(DateTime CreatedAt)
+        public List<Ac4yIdentificationBase> findListByCreatedAt(DateTime CreatedAt)
         {
             List<Ac4yIdentificationBase> a = new List<Ac4yIdentificationBase>();
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yIdentificationBases
                                 .Where(ss => ss.CreatedAt == CreatedAt).ToList();
@@ -169,11 +170,11 @@ namespace DataAccess
             }
             return a;
         }
-        public static List<Ac4yIdentificationBase> findListByUpdatedAt(String UpdatedAt)
+        public List<Ac4yIdentificationBase> findListByUpdatedAt(String UpdatedAt)
         {
             List<Ac4yIdentificationBase> a = new List<Ac4yIdentificationBase>();
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yIdentificationBases
                                 .Where(ss => ss.UpdatedAt == UpdatedAt).ToList();
@@ -183,11 +184,11 @@ namespace DataAccess
             return a;
         }
 
-	public Boolean existsInAc4yIdentificationBaseById(Int32 id)
+	public Boolean existsById(Int32 id)
 	{
 		Ac4yIdentificationBase a = null;
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yIdentificationBases
                                 .Where(ss => ss.id == id)
@@ -204,11 +205,11 @@ namespace DataAccess
 			return false;
 		}
 	}
-	public Boolean existsInAc4yIdentificationBaseByGUID(String GUID)
+	public Boolean existsByGUID(String GUID)
 	{
 		Ac4yIdentificationBase a = null;
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yIdentificationBases
                                 .Where(ss => ss.GUID == GUID)
@@ -225,11 +226,11 @@ namespace DataAccess
 			return false;
 		}
 	}
-	public Boolean existsInAc4yIdentificationBaseByHumanId(String HumanId)
+	public Boolean existsByHumanId(String HumanId)
 	{
 		Ac4yIdentificationBase a = null;
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yIdentificationBases
                                 .Where(ss => ss.HumanId == HumanId)
@@ -246,11 +247,11 @@ namespace DataAccess
 			return false;
 		}
 	}
-	public Boolean existsInAc4yIdentificationBaseByPublicHumanId(String PublicHumanId)
+	public Boolean existsByPublicHumanId(String PublicHumanId)
 	{
 		Ac4yIdentificationBase a = null;
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yIdentificationBases
                                 .Where(ss => ss.PublicHumanId == PublicHumanId)
@@ -267,11 +268,11 @@ namespace DataAccess
 			return false;
 		}
 	}
-	public Boolean existsInAc4yIdentificationBaseByCreatedAt(DateTime CreatedAt)
+	public Boolean existsByCreatedAt(DateTime CreatedAt)
 	{
 		Ac4yIdentificationBase a = null;
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yIdentificationBases
                                 .Where(ss => ss.CreatedAt == CreatedAt)
@@ -288,11 +289,11 @@ namespace DataAccess
 			return false;
 		}
 	}
-	public Boolean existsInAc4yIdentificationBaseByUpdatedAt(String UpdatedAt)
+	public Boolean existsByUpdatedAt(String UpdatedAt)
 	{
 		Ac4yIdentificationBase a = null;
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yIdentificationBases
                                 .Where(ss => ss.UpdatedAt == UpdatedAt)
@@ -310,9 +311,9 @@ namespace DataAccess
 		}
 	}
 	
-		public void updateAc4yIdentificationBase(Ac4yIdentificationBase updatedAc4yIdentificationBase)
+		public void update(Ac4yIdentificationBase updatedAc4yIdentificationBase)
         {
-            using(var ctx = new AllContext())
+            using(var ctx = new AllContext(baseName))
             {
                 var _Ac4yIdentificationBase = ctx.Ac4yIdentificationBases
 				.Where(ss => ss.id == updatedAc4yIdentificationBase.id).FirstOrDefault();
@@ -328,9 +329,9 @@ namespace DataAccess
         }
 
 
-        public static void deleteById(Int32 id)
+        public void deleteById(Int32 id)
         {
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yIdentificationBases
                                 .Remove(ctx.Ac4yIdentificationBases.Single(ss => ss.id == id));
@@ -338,14 +339,14 @@ namespace DataAccess
                 ctx.SaveChanges();
             }
         }
-        */
-	public void addNewAc4yIdentificationBase(Ac4yIdentificationBase _Ac4yIdentificationBase)
-	{
-		using (context)
-            {
-                context.Ac4yIdentificationBases.Add(_Ac4yIdentificationBase);
 
-                context.SaveChanges();
+	public void addNew(Ac4yIdentificationBase _Ac4yIdentificationBase)
+	{
+		using (var ctx = new AllContext(baseName))
+            {
+                ctx.Ac4yIdentificationBases.Add(_Ac4yIdentificationBase);
+
+                ctx.SaveChanges();
             }
 	}
     }

@@ -1,19 +1,30 @@
-using CSAc4y.Class;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using d7p4n4.Algebra.Class;
+using d7p4n4.Final.Class;
+using d7p4n4.Context.Class;
 
 
-namespace DataAccess
+namespace d7p4n4.EFMethods.Class
 {
     public class Ac4yPersistentEntityMethods : Ac4yPersistentAlgebra
-    {/*
-        public static Ac4yPersistent findFirstByAc4yIdentification(Ac4yIdentification Ac4yIdentification)
+    {
+		public string baseName { get; set; }
+
+        public Ac4yPersistentEntityMethods() { }
+
+        public Ac4yPersistentEntityMethods(string newBaseName)
+        {
+            baseName = newBaseName;
+        }
+	
+        public Ac4yPersistent findFirstByAc4yIdentification(Ac4yIdentification Ac4yIdentification)
         {
             Ac4yPersistent a = null;
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yPersistents
                                 .Where(ss => ss.Ac4yIdentification == Ac4yIdentification)
@@ -23,11 +34,11 @@ namespace DataAccess
             }
             return a;
         }
-        public static Ac4yPersistent findFirstById(Int32 id)
+        public Ac4yPersistent findFirstById(Int32 id)
         {
             Ac4yPersistent a = null;
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yPersistents
                                 .Where(ss => ss.id == id)
@@ -38,11 +49,11 @@ namespace DataAccess
             return a;
         }
 
-        public static List<Ac4yPersistent> findListByAc4yIdentification(Ac4yIdentification Ac4yIdentification)
+        public List<Ac4yPersistent> findListByAc4yIdentification(Ac4yIdentification Ac4yIdentification)
         {
             List<Ac4yPersistent> a = new List<Ac4yPersistent>();
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yPersistents
                                 .Where(ss => ss.Ac4yIdentification == Ac4yIdentification).ToList();
@@ -51,11 +62,11 @@ namespace DataAccess
             }
             return a;
         }
-        public static List<Ac4yPersistent> findListById(Int32 id)
+        public List<Ac4yPersistent> findListById(Int32 id)
         {
             List<Ac4yPersistent> a = new List<Ac4yPersistent>();
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yPersistents
                                 .Where(ss => ss.id == id).ToList();
@@ -65,11 +76,11 @@ namespace DataAccess
             return a;
         }
 
-	public Boolean existsInAc4yPersistentByAc4yIdentification(Ac4yIdentification Ac4yIdentification)
+	public Boolean existsByAc4yIdentification(Ac4yIdentification Ac4yIdentification)
 	{
 		Ac4yPersistent a = null;
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yPersistents
                                 .Where(ss => ss.Ac4yIdentification == Ac4yIdentification)
@@ -86,11 +97,11 @@ namespace DataAccess
 			return false;
 		}
 	}
-	public Boolean existsInAc4yPersistentById(Int32 id)
+	public Boolean existsById(Int32 id)
 	{
 		Ac4yPersistent a = null;
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yPersistents
                                 .Where(ss => ss.id == id)
@@ -108,9 +119,9 @@ namespace DataAccess
 		}
 	}
 	
-		public void updateAc4yPersistent(Ac4yPersistent updatedAc4yPersistent)
+		public void update(Ac4yPersistent updatedAc4yPersistent)
         {
-            using(var ctx = new AllContext())
+            using(var ctx = new AllContext(baseName))
             {
                 var _Ac4yPersistent = ctx.Ac4yPersistents
 				.Where(ss => ss.id == updatedAc4yPersistent.id).FirstOrDefault();
@@ -122,9 +133,9 @@ namespace DataAccess
         }
 
 
-        public static void deleteById(Int32 id)
+        public void deleteById(Int32 id)
         {
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yPersistents
                                 .Remove(ctx.Ac4yPersistents.Single(ss => ss.id == id));
@@ -133,14 +144,14 @@ namespace DataAccess
             }
         }
 
-	public static void addNewAc4yPersistent(Ac4yPersistent _Ac4yPersistent)
+	public void addNew(Ac4yPersistent _Ac4yPersistent)
 	{
-		using (var ctx = new AllContext())
+		using (var ctx = new AllContext(baseName))
             {
                 ctx.Ac4yPersistents.Add(_Ac4yPersistent);
 
                 ctx.SaveChanges();
             }
-	}*/
+	}
     }
 }

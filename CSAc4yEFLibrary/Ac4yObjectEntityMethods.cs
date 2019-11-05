@@ -1,19 +1,30 @@
-using CSAc4y.Class;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using d7p4n4.Algebra.Class;
+using d7p4n4.Final.Class;
+using d7p4n4.Context.Class;
 
 
-namespace DataAccess
+namespace d7p4n4.EFMethods.Class
 {
     public class Ac4yObjectEntityMethods : Ac4yObjectAlgebra
-    {/*
-        public static Ac4yObject findFirstByAc4yIdentification(Ac4yIdentification Ac4yIdentification)
+    {
+		public string baseName { get; set; }
+
+        public Ac4yObjectEntityMethods() { }
+
+        public Ac4yObjectEntityMethods(string newBaseName)
+        {
+            baseName = newBaseName;
+        }
+	
+        public Ac4yObject findFirstByAc4yIdentification(Ac4yIdentification Ac4yIdentification)
         {
             Ac4yObject a = null;
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yObjects
                                 .Where(ss => ss.Ac4yIdentification == Ac4yIdentification)
@@ -23,11 +34,11 @@ namespace DataAccess
             }
             return a;
         }
-        public static Ac4yObject findFirstById(Int32 id)
+        public Ac4yObject findFirstById(Int32 id)
         {
             Ac4yObject a = null;
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yObjects
                                 .Where(ss => ss.id == id)
@@ -38,11 +49,11 @@ namespace DataAccess
             return a;
         }
 
-        public static List<Ac4yObject> findListByAc4yIdentification(Ac4yIdentification Ac4yIdentification)
+        public List<Ac4yObject> findListByAc4yIdentification(Ac4yIdentification Ac4yIdentification)
         {
             List<Ac4yObject> a = new List<Ac4yObject>();
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yObjects
                                 .Where(ss => ss.Ac4yIdentification == Ac4yIdentification).ToList();
@@ -51,11 +62,11 @@ namespace DataAccess
             }
             return a;
         }
-        public static List<Ac4yObject> findListById(Int32 id)
+        public List<Ac4yObject> findListById(Int32 id)
         {
             List<Ac4yObject> a = new List<Ac4yObject>();
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yObjects
                                 .Where(ss => ss.id == id).ToList();
@@ -65,11 +76,11 @@ namespace DataAccess
             return a;
         }
 
-	public Boolean existsInAc4yObjectByAc4yIdentification(Ac4yIdentification Ac4yIdentification)
+	public Boolean existsByAc4yIdentification(Ac4yIdentification Ac4yIdentification)
 	{
 		Ac4yObject a = null;
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yObjects
                                 .Where(ss => ss.Ac4yIdentification == Ac4yIdentification)
@@ -86,11 +97,11 @@ namespace DataAccess
 			return false;
 		}
 	}
-	public Boolean existsInAc4yObjectById(Int32 id)
+	public Boolean existsById(Int32 id)
 	{
 		Ac4yObject a = null;
 
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yObjects
                                 .Where(ss => ss.id == id)
@@ -108,9 +119,9 @@ namespace DataAccess
 		}
 	}
 	
-		public void updateAc4yObject(Ac4yObject updatedAc4yObject)
+		public void update(Ac4yObject updatedAc4yObject)
         {
-            using(var ctx = new AllContext())
+            using(var ctx = new AllContext(baseName))
             {
                 var _Ac4yObject = ctx.Ac4yObjects
 				.Where(ss => ss.id == updatedAc4yObject.id).FirstOrDefault();
@@ -122,9 +133,9 @@ namespace DataAccess
         }
 
 
-        public static void deleteById(Int32 id)
+        public void deleteById(Int32 id)
         {
-            using (var ctx = new AllContext())
+            using (var ctx = new AllContext(baseName))
             {
                 var query = ctx.Ac4yObjects
                                 .Remove(ctx.Ac4yObjects.Single(ss => ss.id == id));
@@ -133,14 +144,14 @@ namespace DataAccess
             }
         }
 
-	public static void addNewAc4yObject(Ac4yObject _Ac4yObject)
+	public void addNew(Ac4yObject _Ac4yObject)
 	{
-		using (var ctx = new AllContext())
+		using (var ctx = new AllContext(baseName))
             {
                 ctx.Ac4yObjects.Add(_Ac4yObject);
 
                 ctx.SaveChanges();
             }
-	}*/
+	}
     }
 }
