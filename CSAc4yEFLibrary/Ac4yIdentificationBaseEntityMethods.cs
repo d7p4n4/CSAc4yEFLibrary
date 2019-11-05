@@ -32,14 +32,14 @@ namespace DataAccess
                 a = query;
             }
             return a;
-        }
-        public static Ac4yIdentificationBase findFirstByGUID(String GUID)
+        }/*
+        public Ac4yIdentificationBase findFirstByGUID(String GUID)
         {
             Ac4yIdentificationBase a = null;
 
-            using (var ctx = new AllContext())
+            using (context)
             {
-                var query = ctx.Ac4yIdentificationBases
+                var query = context.Ac4yIdentificationBases
                                 .Where(ss => ss.GUID == GUID)
                                 .FirstOrDefault<Ac4yIdentificationBase>();
 
@@ -338,7 +338,7 @@ namespace DataAccess
                 ctx.SaveChanges();
             }
         }
-
+        */
 	public void addNewAc4yIdentificationBase(Ac4yIdentificationBase _Ac4yIdentificationBase)
 	{
 		using (context)

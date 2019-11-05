@@ -8,12 +8,12 @@ using System.Text;
 namespace DataAccess
 {
     public class Ac4yIdentificationEntityMethods : Ac4yIdentificationAlgebra
-    {
+    {/*
         public static Ac4yIdentification findFirstByTemplate(Ac4yIdentificationBase template)
         {
             Ac4yIdentification a = null;
 
-            using (var ctx = new AllContext())
+            using (context)
             {
                 var query = ctx.Ac4yIdentifications
                                 .Where(ss => ss.template == template)
@@ -386,6 +386,6 @@ namespace DataAccess
 
                 ctx.SaveChanges();
             }
-	}
+	}*/
     }
 }

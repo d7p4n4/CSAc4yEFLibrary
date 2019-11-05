@@ -8,7 +8,7 @@ using System.Text;
 namespace DataAccess
 {
     public class Ac4yEntityMethods : Ac4yAlgebra
-    {
+    {/*
         public static Ac4y findFirstByAc4yIdentification(Ac4yIdentification Ac4yIdentification)
         {
             Ac4y a = null;
@@ -141,6 +141,6 @@ namespace DataAccess
 
                 ctx.SaveChanges();
             }
-	}
+	}*/
     }
 }

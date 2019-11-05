@@ -10,7 +10,9 @@ namespace DataAccess
 {
     public class AllContext : DbContext
     {
-        public AllContext() : base("Ac4yDb")
+        private string baseName { get; set; }
+
+        public AllContext(string newBaseName) : base(newBaseName)
         {
             
         }
