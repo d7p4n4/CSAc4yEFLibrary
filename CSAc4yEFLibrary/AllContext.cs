@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using d7p4n4.Final.Class;
+using ac4yNamespace.Final.Class;
 
-namespace d7p4n4.Context.Class
+namespace ac4yNamespace.Context.Class
 {
     public class AllContext : DbContext
     {

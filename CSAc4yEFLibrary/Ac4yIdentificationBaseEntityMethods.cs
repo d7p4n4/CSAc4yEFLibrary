@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using d7p4n4.Algebra.Class;
-using d7p4n4.Final.Class;
-using d7p4n4.Context.Class;
+using ac4yNamespace.Algebra.Class;
+using ac4yNamespace.Final.Class;
+using ac4yNamespace.Context.Class;
 
 
-namespace d7p4n4.EFMethods.Class
+namespace ac4yNamespace.EFMethods.Class
 {
     public class Ac4yIdentificationBaseEntityMethods : Ac4yIdentificationBaseAlgebra
     {
